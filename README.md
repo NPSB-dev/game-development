@@ -1,3 +1,4 @@
 # game-development
 Game development project in Unity
-Buna
+Raducanu Andrei-Cosmin
+
