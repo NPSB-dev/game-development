@@ -1,6 +1,7 @@
 # game-development
-
-Game development project in Unit
-
-Raducanu Andrei-Cosmin
-Iatan Andrei-Sebastian
+Game development project in Unity  
+  
+Raducanu Andrei-Cosmin  
+Voinea Stefania Alexandra  
+Iatan Andrei-Sebastian  
+Oprea Laurentiu-Cristian  
