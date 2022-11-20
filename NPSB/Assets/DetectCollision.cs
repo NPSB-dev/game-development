@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DetectCollision : MonoBehaviour
 {
-    public GameObject beer;
+    private GameObject beer;
+    public GameObject beerPrefab;
     public float coolDown = 3.0f;
     public float respawnTime = 5.0f;
     private float spawnTime;
@@ -12,26 +13,32 @@ public class DetectCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Beer")
+        if (other.gameObject.tag == "beer")
         {
+            beer = other.gameObject;
             StartCoroutine(ShowAndHide(coolDown)); 
         }
     }
 
+    void Start()
+    {
+        randomRespawn();
+    }
+
     void Update()
     {
-        if(Time.time - spawnTime > respawnTime && isRendered == true)
+        if(Time.time - spawnTime > respawnTime && isRendered)
         {
             randomRespawn();
             spawnTime = Time.time;
         }
     }
 
-    IEnumerator ShowAndHide(float delay)
+    IEnumerator ShowAndHide(float coolDown)
     {
-        beer.transform.position = new Vector3(0, -1, 0);
+        Destroy(beer);
         isRendered = false;
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(coolDown);
         spawnTime = Time.time;
         randomRespawn();
         isRendered = true;
@@ -40,7 +47,9 @@ public class DetectCollision : MonoBehaviour
     void randomRespawn()
     {
         Vector3 randomSpawnPosition = new Vector3(Random.Range(-10, 11), 1, Random.Range(-10, 11));
-        beer.transform.position = randomSpawnPosition;
+        beer = Instantiate(beerPrefab, randomSpawnPosition, Quaternion.identity);
+        Destroy(beer, 5);
+        isRendered = true;
     }
 }
 
