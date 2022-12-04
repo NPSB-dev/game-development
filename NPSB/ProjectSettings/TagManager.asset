@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - beer
+  - Resolution
+  - FullScreen
   layers:
   - Default
   - TransparentFX
