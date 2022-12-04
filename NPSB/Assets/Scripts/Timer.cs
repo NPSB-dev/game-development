@@ -22,22 +22,22 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Globals.difficulty == "easy"){
+        if (Globals.DifficultyLevel == "easy"){
             currentTime = 600;
             minutes = 10;
             timerText.text = minutes.ToString("00") + ":" + "00";
         }
-        if (Globals.difficulty == "normal"){
+        if (Globals.DifficultyLevel == "normal"){
             currentTime = 300;
             minutes = 5;
             timerText.text = minutes.ToString("00") + ":" + "00";
         }
-        if (Globals.difficulty == "hard"){
+        if (Globals.DifficultyLevel == "hard"){
             currentTime = 180;
             minutes = 3;
             timerText.text = minutes.ToString("00") + ":" + "00";
         }
-        if (Globals.difficulty == "sandbox"){
+        if (Globals.DifficultyLevel == "endless"){
             infinite = true;
             timerText.text = "∞ : ∞";
         }

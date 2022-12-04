@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void SetDifficulty(string difficultyLevel)
     {
-        NPSB_singleton.DifficultyLevel = difficultyLevel;
+        Globals.DifficultyLevel = difficultyLevel;
 
         Play();
     }
