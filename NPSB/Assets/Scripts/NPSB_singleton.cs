@@ -7,7 +7,7 @@ public class NPSB_singleton : MonoBehaviour
 {
     public static NPSB_singleton Instance { get; private set; }
 
-    public static int DifficultyLevel; //0 - easy, 1 - normal, 2 - hard , 3 - endless
+    public static string DifficultyLevel;
 
     private void Awake()
     {
