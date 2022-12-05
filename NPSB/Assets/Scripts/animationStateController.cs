@@ -18,7 +18,13 @@ public class animationStateController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool movingKeyPressed = Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d");
+        if (Globals.freezeMovement)
+        {
+            animator.SetBool(isWalkingHash, false);
+            return;
+        }
+
+        bool movingKeyPressed = Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
         bool isWalking = animator.GetBool(isWalkingHash);
 
         if (movingKeyPressed && !isWalking)

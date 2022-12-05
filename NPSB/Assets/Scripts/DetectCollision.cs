@@ -27,6 +27,9 @@ public class DetectCollision : MonoBehaviour
 
     void Update()
     {
+        if (Globals.freezeInteractions)
+            return;
+
         if(Time.time - spawnTime > respawnTime && isRendered)
         {
             randomRespawn();
@@ -51,6 +54,9 @@ public class DetectCollision : MonoBehaviour
         Destroy(beer, 5);
         isRendered = true;
     }
+
+
+
 }
 
 

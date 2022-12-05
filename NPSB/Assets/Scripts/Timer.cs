@@ -22,6 +22,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         if (Globals.DifficultyLevel == "easy"){
             currentTime = 600;
             minutes = 10;
@@ -46,6 +47,8 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Globals.isPaused)
+            return;
         if(!started){
             if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
                 started = true;
@@ -71,5 +74,6 @@ public class Timer : MonoBehaviour
 
     public void FreezeScene(){
         Time.timeScale = 0;
+        // ADD here after-game screen
     }
 }
