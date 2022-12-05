@@ -9,6 +9,12 @@ public class Globals : MonoBehaviour
 
     public static string DifficultyLevel;
 
+    //Pause settings:
+    public static bool isPaused = false;
+    public static bool freezeMovement = false;
+    public static bool freezeDrunkenness = false;
+    public static bool freezeInteractions = false;
+
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
