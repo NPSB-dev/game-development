@@ -22,7 +22,6 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         if (Globals.DifficultyLevel == "easy"){
             currentTime = 600;
             minutes = 10;
