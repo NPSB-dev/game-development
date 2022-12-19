@@ -22,7 +22,8 @@ public class PlayerDrunkennessBar : MonoBehaviour
         currentDrunkenness = Globals.drunkenness;
         if (Time.time >= nextTime)
         {
-            DecreaseDrunkenness();
+            if (!Globals.freezeDrunkenness)
+                DecreaseDrunkenness();
             nextTime += interval;
         }
     }
