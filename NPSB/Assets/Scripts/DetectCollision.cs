@@ -11,18 +11,31 @@ public class DetectCollision : MonoBehaviour
     private float spawnTime;
     private bool isRendered = true;
 
+    public DrunkennessBar drunkennessBar;
+    public int currentDrunkenness = 0;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "beer")
         {
             beer = other.gameObject;
-            StartCoroutine(ShowAndHide(coolDown)); 
+            StartCoroutine(ShowAndHide(coolDown));
+            AddDrunkenness();
         }
+    }
+
+    private void AddDrunkenness()
+    {
+        Globals.drunkenness = (Globals.drunkenness + 2) <= drunkennessBar.GetMaxDrunkenness()
+                ? Globals.drunkenness + 2
+                : drunkennessBar.GetMaxDrunkenness();
+        drunkennessBar.SetDrunkenness(Globals.drunkenness);
     }
 
     void Start()
     {
         randomRespawn();
+        drunkennessBar.SetMaxDrunkenness(100);
     }
 
     void Update()
@@ -35,6 +48,19 @@ public class DetectCollision : MonoBehaviour
             randomRespawn();
             spawnTime = Time.time;
         }
+    }
+
+    public void DecreaseHealth()
+    {
+        if (currentDrunkenness - 1 >= 0)
+        {
+            currentDrunkenness = currentDrunkenness - 1;
+        }
+        else
+        {
+            currentDrunkenness = 0;
+        }
+        drunkennessBar.SetDrunkenness(currentDrunkenness);
     }
 
     IEnumerator ShowAndHide(float coolDown)
@@ -54,9 +80,6 @@ public class DetectCollision : MonoBehaviour
         Destroy(beer, 5);
         isRendered = true;
     }
-
-
-
 }
 
 

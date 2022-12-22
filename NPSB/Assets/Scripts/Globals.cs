@@ -8,6 +8,7 @@ public class Globals : MonoBehaviour
     public static Globals Instance { get; private set; }
 
     public static string DifficultyLevel;
+    public static int drunkenness;
 
     //Pause settings:
     public static bool isPaused = false;
