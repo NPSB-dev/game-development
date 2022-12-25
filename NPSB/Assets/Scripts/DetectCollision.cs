@@ -14,10 +14,13 @@ public class DetectCollision : MonoBehaviour
     public DrunkennessBar drunkennessBar;
     public int currentDrunkenness = 0;
 
+    [SerializeField] private AudioSource beerSound;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "beer")
         {
+            beerSound.Play();
             beer = other.gameObject;
             StartCoroutine(ShowAndHide(coolDown));
             AddDrunkenness();

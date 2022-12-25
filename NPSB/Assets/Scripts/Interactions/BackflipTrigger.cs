@@ -6,6 +6,9 @@ public class BackflipTrigger : MonoBehaviour, IInteractable
 {
     [SerializeField] private string _prompt;
 
+    [SerializeField] private AudioSource interactSuccessAudio;
+    [SerializeField] private AudioSource interactFailAudio;
+
     public string InteractionPrompt => _prompt;
 
     public void Update()
@@ -16,7 +19,7 @@ public class BackflipTrigger : MonoBehaviour, IInteractable
         }
         else
         {
-            _prompt = "Get 100% drunk and do a backflip";
+            _prompt = "Get 100% drunk before doing a backflip";
         }
     }
 
@@ -25,11 +28,13 @@ public class BackflipTrigger : MonoBehaviour, IInteractable
     {
         if (Globals.drunkenness >= 100)
         {
+            interactSuccessAudio.Play();
             Debug.Log("Start backflip");
             return true;
         }
         else
         {
+            interactFailAudio.Play();
             Debug.Log("Not drunk enough to backflip");
             return false;
         }

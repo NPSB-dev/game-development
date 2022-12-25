@@ -11,6 +11,8 @@ game’s goal is to fill the drunkenness bar to a 100% and do a backflip before 
 - Z - change camera  
 - Mouse wheel - zoom (only in 'follow' camera)  
 - P - Pause  
+- E - Interact  
+- Esc - Exit in-game  
   
   
 ### Meet the team:  

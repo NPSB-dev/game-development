@@ -19,6 +19,12 @@ public class Timer : MonoBehaviour
 
     public bool started = false;
 
+    [SerializeField] private AudioSource timerSound;
+    [SerializeField] private AudioSource loseSound;
+    public static bool audioPlays = false;
+    int prevPlayTime = 11;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +61,15 @@ public class Timer : MonoBehaviour
 
         if(!infinite && started)
         {
+            if(currentTime <= 10)
+            {
+                if (!audioPlays && (int)currentTime < prevPlayTime-1)
+                {
+       
+                    timerSound.Play();
+                    prevPlayTime= (int) currentTime + 1;
+                }
+            }
             if(currentTime <= 0){
                 timerText.text = "TIME'S UP";
                 timerText.color = Color.red;
@@ -71,8 +86,16 @@ public class Timer : MonoBehaviour
         }
     }
 
-    public void FreezeScene(){
-        Time.timeScale = 0;
+    public void FreezeScene()
+    {
+        loseSound.Play();
+
+        Globals.isPaused = true;
+        Globals.freezeMovement = true;
+        Globals.freezeDrunkenness = true;
+        Globals.freezeInteractions = true;
+
+        // Time.timeScale = 0;
         // ADD here after-game screen
     }
 }
