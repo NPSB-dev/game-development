@@ -16,6 +16,9 @@ public class Interactor : MonoBehaviour
 
     public IInteractable interactable;
 
+    [SerializeField] private AudioSource interactSuccessAudio;
+    [SerializeField] private AudioSource interactFailAudio;
+
     private void Update()
     {
         _numFound = Physics.OverlapSphereNonAlloc(_interactionPoint.position, _interactionPointRadius, _colliders, _interactionableMask);
