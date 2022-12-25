@@ -1,6 +1,7 @@
 ## **NPSB**  
   
-  The **production** branch contains the 'ready to deliver' , clean code to be reviewed. The code should be ready to run after cloning locally and importing the project in Unity Hub. Github LFS might be needed in order to clone assets fully.  
+  The **production** branch contains the 'ready to deliver' , clean code to be reviewed.  Start game in ***Main Menu*** scene.  
+  The code should be ready to run after cloning locally and importing the project in Unity Hub. **Github LFS** might be needed in order to clone assets fully.  
 
 ###  **Game goal:**  
 As a user I want to play against a clock counting down. The
