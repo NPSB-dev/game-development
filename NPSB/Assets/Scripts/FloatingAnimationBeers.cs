@@ -14,6 +14,6 @@ public class FloatingAnimationBeers : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(transform.position.x, 1.5f + Mathf.Sin(Time.time) * 0.5f, transform.position.z);
-        Debug.Log(1 + Mathf.Sin(Time.time) * 0.5f);
+        // Debug.Log(1 + Mathf.Sin(Time.time) * 0.5f);
     }
 }
