@@ -16,6 +16,7 @@ public class BackflipTrigger : MonoBehaviour, IInteractable
     public static bool openedWinScreen = false;
 
     [SerializeField] private TextMeshProUGUI scoreToDisplay;
+    [SerializeField] private TextMeshProUGUI highscoreDisplay;
 
     public void Start()
     {
@@ -57,7 +58,16 @@ public class BackflipTrigger : MonoBehaviour, IInteractable
     {
         openedWinScreen = true;
         winScreen.SetActive(true);
-        scoreToDisplay.text = "Score: "+ CalculateScore();
+        int score = CalculateScore();
+        scoreToDisplay.text = "Score: "+ score;
+
+        if (score > Globals.highscore)
+        {
+            PlayerPrefs.SetInt("Highscore", score);
+            Globals.highscore = score;
+        }
+        highscoreDisplay.text = "Highscore: " + Globals.highscore;
+
         Debug.Log("Did backflip");
 
         Globals.isPaused = true;

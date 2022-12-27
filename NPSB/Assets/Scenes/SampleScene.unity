@@ -5888,6 +5888,7 @@ MonoBehaviour:
   interactFailAudio: {fileID: 211403547}
   winScreen: {fileID: 375069428}
   scoreToDisplay: {fileID: 1350691631}
+  highscoreDisplay: {fileID: 971632369}
 --- !u!1 &1325298671 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 3583d1e1f9ef0ee4584df53d65e499fa, type: 3}
