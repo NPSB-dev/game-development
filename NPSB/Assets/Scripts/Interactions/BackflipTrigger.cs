@@ -38,7 +38,7 @@ public class BackflipTrigger : MonoBehaviour, IInteractable
 
     public bool Interact(Interactor interactor)
     {
-        if (Globals.drunkenness >= 1)
+        if (Globals.drunkenness >= 100)
         {
             interactSuccessAudio.Play();
             // TODO handle win screen after implementing minigame
