@@ -17,6 +17,8 @@ public class Globals : MonoBehaviour
     public static bool freezeDrunkenness = false;
     public static bool freezeInteractions = false;
 
+    public static int highscore = PlayerPrefs.GetInt("Highscore", 0);
+
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
