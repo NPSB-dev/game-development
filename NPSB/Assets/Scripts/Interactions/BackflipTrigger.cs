@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BackflipTrigger : MonoBehaviour, IInteractable
 {
@@ -10,6 +11,16 @@ public class BackflipTrigger : MonoBehaviour, IInteractable
     [SerializeField] private AudioSource interactFailAudio;
 
     public string InteractionPrompt => _prompt;
+
+    [SerializeField] private GameObject winScreen;
+    public static bool openedWinScreen = false;
+
+    [SerializeField] private TextMeshProUGUI scoreToDisplay;
+
+    public void Start()
+    {
+        winScreen.SetActive(false);
+    }
 
     public void Update()
     {
@@ -26,10 +37,12 @@ public class BackflipTrigger : MonoBehaviour, IInteractable
 
     public bool Interact(Interactor interactor)
     {
-        if (Globals.drunkenness >= 100)
+        if (Globals.drunkenness >= 1)
         {
             interactSuccessAudio.Play();
-            Debug.Log("Start backflip");
+            // TODO handle win screen after implementing minigame
+            if(!openedWinScreen)
+                WinGame();
             return true;
         }
         else
@@ -38,5 +51,50 @@ public class BackflipTrigger : MonoBehaviour, IInteractable
             Debug.Log("Not drunk enough to backflip");
             return false;
         }
+    }
+
+    public void WinGame()
+    {
+        openedWinScreen = true;
+        winScreen.SetActive(true);
+        scoreToDisplay.text = "Score: "+ CalculateScore();
+        Debug.Log("Did backflip");
+
+        Globals.isPaused = true;
+        Globals.isPausedExit = true;
+        Globals.freezeMovement = true;
+        Globals.freezeDrunkenness = true;
+        Globals.freezeInteractions = true;
+    }
+
+    public int CalculateScore()
+    {
+        // int score = 0;
+        float multiplier = 0;
+        // int totalSec;
+        int timeLeft = Timer.GetTimeLeft();
+
+        if (Globals.DifficultyLevel == "easy")
+        {
+            multiplier = 1f;
+            // totalSec = 600;
+        }
+        if (Globals.DifficultyLevel == "normal")
+        {
+            multiplier = 2f;
+            // totalSec = 300;
+        }
+        if (Globals.DifficultyLevel == "hard")
+        {
+            multiplier = 3f;
+            // totalSec = 180;
+        }
+        if (Globals.DifficultyLevel == "endless")
+        {
+            return 0;
+        }
+
+        return (int) multiplier * timeLeft;
+
     }
 }

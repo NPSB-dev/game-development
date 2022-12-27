@@ -59,6 +59,8 @@ public class ExitIngameMenu : MonoBehaviour
         Globals.freezeInteractions = false;
         Globals.isPausedExit = false;
         Globals.isPaused = false;
+
+        BackflipTrigger.openedWinScreen = false;
         // Debug.Log("End of GoToMainMenu, isPaused: " + Globals.isPaused + "  isPausedExit: " + Globals.isPausedExit);
         SceneManager.LoadScene("MainMenu");
     }

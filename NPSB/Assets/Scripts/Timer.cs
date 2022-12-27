@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timerText;
 
     [Header("Timer Settings")]
-    public float currentTime;
+    public static float currentTime = 300;
     public bool countDown = true;
     public bool infinite = false;
 
@@ -106,5 +106,10 @@ public class Timer : MonoBehaviour
         // Debug.Log("Set all to true, isPaused: " + Globals.isPaused + "  isPausedExit: " + Globals.isPausedExit);
 
         // Time.timeScale = 0;
+    }
+
+    public static int GetTimeLeft()
+    {
+        return (int) currentTime;
     }
 }

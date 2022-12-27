@@ -371,7 +371,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1703198503}
-  currentTime: 300
   countDown: 1
   infinite: 0
   started: 0
@@ -5887,6 +5886,8 @@ MonoBehaviour:
   _prompt: Get 100% drunk and do a backflip
   interactSuccessAudio: {fileID: 1594447478}
   interactFailAudio: {fileID: 211403547}
+  winScreen: {fileID: 375069428}
+  scoreToDisplay: {fileID: 1350691631}
 --- !u!1 &1325298671 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 3583d1e1f9ef0ee4584df53d65e499fa, type: 3}
