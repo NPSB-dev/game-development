@@ -9,7 +9,7 @@ public class DetectCollision : MonoBehaviour
     public float coolDown = 3.0f;
     public float respawnTime = 5.0f;
     private float spawnTime;
-    private bool isRendered = true;
+    public static bool isRendered = false;
 
     public DrunkennessBar drunkennessBar;
     public int currentDrunkenness = 0;
@@ -37,8 +37,19 @@ public class DetectCollision : MonoBehaviour
 
     void Start()
     {
-        randomRespawn();
+        if (!AreThereBeersOnTheGround())
+        {
+            randomRespawn();
+        }
         drunkennessBar.SetMaxDrunkenness(100);
+    }
+
+    bool AreThereBeersOnTheGround()
+    {
+        var beers = GameObject.FindGameObjectsWithTag("beer");
+        // Debug.Log(beers.Length);
+
+        return beers.Length != 0;
     }
 
     void Update()
@@ -73,12 +84,12 @@ public class DetectCollision : MonoBehaviour
         yield return new WaitForSeconds(coolDown);
         spawnTime = Time.time;
         randomRespawn();
-        isRendered = true;
     }
 
     void randomRespawn()
     {
-        Vector3 randomSpawnPosition = new Vector3(Random.Range(-10, 11), 1, Random.Range(-10, 11));
+        Destroy(beer);
+        Vector3 randomSpawnPosition = new Vector3(Random.Range(-14, 15), 1, Random.Range(-14, 15));
         beer = Instantiate(beerPrefab, randomSpawnPosition, Quaternion.identity);
         Destroy(beer, 5);
         isRendered = true;

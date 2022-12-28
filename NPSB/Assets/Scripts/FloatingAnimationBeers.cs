@@ -13,7 +13,7 @@ public class FloatingAnimationBeers : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, 1.5f + Mathf.Sin(Time.time) * 0.5f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, 2f + Mathf.Sin(Time.time) * 0.5f, transform.position.z);
         // Debug.Log(1 + Mathf.Sin(Time.time) * 0.5f);
     }
 }
