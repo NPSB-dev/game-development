@@ -12,9 +12,12 @@ public class Globals : MonoBehaviour
 
     //Pause settings:
     public static bool isPaused = false;
+    public static bool isPausedExit = false;
     public static bool freezeMovement = false;
     public static bool freezeDrunkenness = false;
     public static bool freezeInteractions = false;
+
+    public static int highscore = PlayerPrefs.GetInt("Highscore", 0);
 
     private void Awake()
     {

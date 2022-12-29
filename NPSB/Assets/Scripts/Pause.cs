@@ -29,9 +29,12 @@ public class Pause : MonoBehaviour
             else
             {
                 PauseOverlay.SetActive(false);
-                Globals.freezeMovement = false;
-                Globals.freezeDrunkenness = false;
-                Globals.freezeInteractions = false;
+                if (!Globals.isPausedExit)
+                {
+                    Globals.freezeMovement = false;
+                    Globals.freezeDrunkenness = false;
+                    Globals.freezeInteractions = false;
+                }
                 Globals.isPaused = false;
             }
         }

@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timerText;
 
     [Header("Timer Settings")]
-    public float currentTime;
+    public static float currentTime = 300;
     public bool countDown = true;
     public bool infinite = false;
 
@@ -24,10 +24,14 @@ public class Timer : MonoBehaviour
     public static bool audioPlays = false;
     int prevPlayTime = 11;
 
+    [SerializeField] private GameObject loseScreen;
+    private static bool openedLossScreen = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        // Debug.Log("Started scene, isPaused: " + Globals.isPaused + "  isPausedExit: " + Globals.isPausedExit);
+        loseScreen.SetActive(false);
         if (Globals.DifficultyLevel == "easy"){
             currentTime = 600;
             minutes = 10;
@@ -73,7 +77,8 @@ public class Timer : MonoBehaviour
             if(currentTime <= 0){
                 timerText.text = "TIME'S UP";
                 timerText.color = Color.red;
-                FreezeScene();
+                if(!openedLossScreen)
+                    FreezeScene();
             }
             else
             {
@@ -88,14 +93,23 @@ public class Timer : MonoBehaviour
 
     public void FreezeScene()
     {
+        openedLossScreen = true;
         loseSound.Play();
+        loseScreen.SetActive(true);
+        // Debug.Log("Showed loss screen, isPaused: " + Globals.isPaused + "  isPausedExit: " + Globals.isPausedExit);
 
         Globals.isPaused = true;
+        Globals.isPausedExit = true;
         Globals.freezeMovement = true;
         Globals.freezeDrunkenness = true;
         Globals.freezeInteractions = true;
+        // Debug.Log("Set all to true, isPaused: " + Globals.isPaused + "  isPausedExit: " + Globals.isPausedExit);
 
         // Time.timeScale = 0;
-        // ADD here after-game screen
+    }
+
+    public static int GetTimeLeft()
+    {
+        return (int) currentTime;
     }
 }
