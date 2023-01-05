@@ -15,6 +15,7 @@ public class DetectCollision : MonoBehaviour
     public int currentDrunkenness = 0;
 
     [SerializeField] private AudioSource beerSound;
+    [SerializeField] private float _collisionPointRadius = 0.35f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -57,7 +58,7 @@ public class DetectCollision : MonoBehaviour
         if (Globals.freezeInteractions)
             return;
 
-        if(Time.time - spawnTime > respawnTime && isRendered)
+        if (Time.time - spawnTime > respawnTime && isRendered)
         {
             randomRespawn();
             spawnTime = Time.time;
@@ -91,8 +92,24 @@ public class DetectCollision : MonoBehaviour
         Destroy(beer);
         Vector3 randomSpawnPosition = new Vector3(Random.Range(-14, 15), 1, Random.Range(-14, 15));
         beer = Instantiate(beerPrefab, randomSpawnPosition, Quaternion.identity);
+
+        while (CheckForCollisions(beer))
+        {
+            Destroy(beer);
+            randomSpawnPosition = new Vector3(Random.Range(-14, 15), 1, Random.Range(-14, 15));
+            beer = Instantiate(beerPrefab, randomSpawnPosition, Quaternion.identity);
+        }
+
         Destroy(beer, 5);
         isRendered = true;
+    }
+
+    bool CheckForCollisions(GameObject obj)
+    {
+        Collider[] colliders = new Collider[5];
+        int nr = Physics.OverlapSphereNonAlloc(obj.transform.position, _collisionPointRadius, colliders);
+        // Debug.Log(nr);
+        return nr != 1;
     }
 }
 
