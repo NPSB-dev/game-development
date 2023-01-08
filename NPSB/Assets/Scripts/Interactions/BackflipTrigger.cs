@@ -82,7 +82,7 @@ public class BackflipTrigger : MonoBehaviour, IInteractable
         // int score = 0;
         float multiplier = 0;
         // int totalSec;
-        int timeLeft = Timer.GetTimeLeft();
+        float timeLeft = Globals.minutesToPlay * 60 + Globals.secondsToPlay;
 
         if (Globals.DifficultyLevel == "easy")
         {
@@ -104,7 +104,7 @@ public class BackflipTrigger : MonoBehaviour, IInteractable
             return 0;
         }
 
-        return (int) multiplier * timeLeft;
+        return (int) (multiplier * timeLeft);
 
     }
 }

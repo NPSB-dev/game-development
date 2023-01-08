@@ -4,6 +4,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PerfectBeerScript : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class PerfectBeerScript : MonoBehaviour
     public Slider beerSlider;
     public RawImage beer;
     public TextMeshProUGUI instructionText;
+    public GameObject resultScreen;
+    public TextMeshProUGUI resultText;
+    public DrunkennessBar drunkennessBar;
 
     private float speed = 1.0f;
     private float maxSpeed = 2.0f;
@@ -27,6 +31,7 @@ public class PerfectBeerScript : MonoBehaviour
         slider.maxValue = 100;
         beerSlider.value = 0;
         beerSlider.maxValue = 100;
+        Globals.freezeDrunkenness = true;
     }
 
     // Update is called once per frame
@@ -37,6 +42,7 @@ public class PerfectBeerScript : MonoBehaviour
             spacePressed = true;
             instructionText.text = "";
             RotateBeer(slider.value);
+            CalculateScore();
         }
 
         if (!spacePressed)
@@ -45,10 +51,19 @@ public class PerfectBeerScript : MonoBehaviour
             MoveHandle();
         }
 
-        if(spacePressed && beerSlider.value < topValue && !stopGame)
+        if(spacePressed && beerSlider.value < topValue)
         {
             PourBeer();
-            CalculateScore();
+        }
+
+        if (stopGame)
+        {
+            SceneTransition();
+        }
+
+        if (spacePressed && beerSlider.value == topValue && !stopGame)
+        {
+            PromptFinalScreen();
             stopGame = true;
         }
     }
@@ -93,17 +108,56 @@ public class PerfectBeerScript : MonoBehaviour
         float sliderValue = slider.value;
         if (sliderValue < 20.0f || sliderValue > 80)
         {
-            Globals.drunkenness -= 10;
+            if (Globals.drunkenness >= 10)
+                Globals.drunkenness -= 10;
+            else
+                Globals.drunkenness = 0;
         }
         else if (sliderValue < 40.0f || sliderValue > 60)
         {
-            Globals.drunkenness += 5;
+            if (Globals.drunkenness <= 95)
+                Globals.drunkenness += 5;
+            else
+                Globals.drunkenness = 100;
         }
         else
         {
-            Globals.drunkenness += 10;
+            if (Globals.drunkenness <= 90)
+                Globals.drunkenness += 10;
+            else
+                Globals.drunkenness = 100;
         }
-
         print(Globals.drunkenness);
+    }
+
+    public void PromptFinalScreen()
+    {
+        resultScreen.SetActive(true);
+        SetResultText();
+    }
+
+    public void SceneTransition()
+    {
+        Globals.freezeDrunkenness = false;
+        var levelChanger = GameObject.FindObjectOfType(typeof(LevelChanger)) as LevelChanger;
+
+        levelChanger.FadeToLevel(1);
+    }
+
+    public void SetResultText()
+    {
+        float value = slider.value;
+        if (value < 20 || value > 80)
+        {
+            resultText.text = "Auch! \n\n -10 points";
+        }
+        else if (value < 40 || value > 60)
+        {
+            resultText.text = "Ok! \n\n +5 points";
+        }
+        else
+        {
+            resultText.text = "Yum! \n\n +10 points";
+        }
     }
 }

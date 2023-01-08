@@ -9,6 +9,9 @@ public class Globals : MonoBehaviour
 
     public static string DifficultyLevel;
     public static int drunkenness;
+    public static int nextTimeDecayDrunkenness = 10;
+    public static float minutesToPlay = 0;
+    public static float secondsToPlay = 0;
 
     //Pause settings:
     public static bool isPaused = false;
