@@ -96,9 +96,4 @@ public class Timer : MonoBehaviour
 
         // Time.timeScale = 0;
     }
-
-    /*public int GetTimeLeft()
-    {
-        return (int) currentTime;
-    }*/
 }
