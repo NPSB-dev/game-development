@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerDrunkennessBar : MonoBehaviour
 {
     private int interval = 10;
-    private float nextTime = 10;
     private int currentDrunkenness;
     public DrunkennessBar drunkennessBar;
 
@@ -24,7 +23,7 @@ public class PlayerDrunkennessBar : MonoBehaviour
     void Update()
     {
         currentDrunkenness = Globals.drunkenness;
-        if (Time.time >= nextTime)
+        if (Time.time >= Globals.nextTimeDecayDrunkenness)
         {
             if (!waitTenSecBeforeDecay && currentDrunkenness == 100)
             {
@@ -40,7 +39,7 @@ public class PlayerDrunkennessBar : MonoBehaviour
             if(!waitTenSecBeforeDecay)
                 if (!Globals.freezeDrunkenness)
                     DecreaseDrunkenness();
-            nextTime += interval;
+            Globals.nextTimeDecayDrunkenness += interval;
         }
     }
 
