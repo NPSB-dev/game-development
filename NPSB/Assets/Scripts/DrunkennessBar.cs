@@ -29,7 +29,7 @@ public class DrunkennessBar : MonoBehaviour
     {
         slider.maxValue = drunkenness;
         slider.value = Globals.drunkenness;
-        fill.color = gradient.Evaluate(slider.value);
+        fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 
     public int GetMaxDrunkenness()

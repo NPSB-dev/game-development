@@ -31,7 +31,6 @@ public class PerfectBeerScript : MonoBehaviour
         slider.maxValue = 100;
         beerSlider.value = 0;
         beerSlider.maxValue = 100;
-        Globals.freezeDrunkenness = true;
     }
 
     // Update is called once per frame
@@ -138,7 +137,6 @@ public class PerfectBeerScript : MonoBehaviour
 
     public void SceneTransition()
     {
-        Globals.freezeDrunkenness = false;
         var levelChanger = GameObject.FindObjectOfType(typeof(LevelChanger)) as LevelChanger;
 
         levelChanger.FadeToLevel(1);
