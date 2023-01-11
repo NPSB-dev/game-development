@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PerfectBeerTrigger : MonoBehaviour, IInteractable
 {
@@ -14,6 +15,10 @@ public class PerfectBeerTrigger : MonoBehaviour, IInteractable
     {
         interactSuccessAudio.Play();
         Debug.Log("Start perfect beer");
+
+        var levelChanger = GameObject.FindObjectOfType(typeof(LevelChanger)) as LevelChanger;
+
+        levelChanger.FadeToLevel(2);
         return true;
     }
 }

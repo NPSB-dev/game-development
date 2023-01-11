@@ -12,10 +12,8 @@ public class Timer : MonoBehaviour
     [Header("Component")]
     public TextMeshProUGUI timerText;
 
-    [Header("Timer Settings")]
-    public static float currentTime = 300;
+    public float currentTime;
     public bool countDown = true;
-    public bool infinite = false;
 
     public bool started = false;
 
@@ -32,25 +30,13 @@ public class Timer : MonoBehaviour
     {
         // Debug.Log("Started scene, isPaused: " + Globals.isPaused + "  isPausedExit: " + Globals.isPausedExit);
         loseScreen.SetActive(false);
-        if (Globals.DifficultyLevel == "easy"){
-            currentTime = 600;
-            minutes = 10;
-            timerText.text = minutes.ToString("00") + ":" + "00";
-        }
-        if (Globals.DifficultyLevel == "normal"){
-            currentTime = 300;
-            minutes = 5;
-            timerText.text = minutes.ToString("00") + ":" + "00";
-        }
-        if (Globals.DifficultyLevel == "hard"){
-            currentTime = 180;
-            minutes = 3;
-            timerText.text = minutes.ToString("00") + ":" + "00";
-        }
-        if (Globals.DifficultyLevel == "endless"){
-            infinite = true;
+        minutes = Globals.minutesToPlay;
+        seconds = Globals.secondsToPlay;
+        currentTime = minutes * 60 + seconds;
+        if (minutes >= 0)
+            timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00");
+        else
             timerText.text = "∞ : ∞";
-        }
     }
 
     // Update is called once per frame
@@ -63,7 +49,7 @@ public class Timer : MonoBehaviour
                 started = true;
         }
 
-        if(!infinite && started)
+        if(minutes >= 0 && started)
         {
             if(currentTime <= 10)
             {
@@ -86,7 +72,10 @@ public class Timer : MonoBehaviour
 
                 minutes = (int) currentTime / 60;
                 seconds = (int) currentTime % 60;
-                timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00"); 
+                timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00");
+
+                Globals.minutesToPlay = minutes;
+                Globals.secondsToPlay = seconds;
             }
         }
     }
@@ -106,10 +95,5 @@ public class Timer : MonoBehaviour
         // Debug.Log("Set all to true, isPaused: " + Globals.isPaused + "  isPausedExit: " + Globals.isPausedExit);
 
         // Time.timeScale = 0;
-    }
-
-    public static int GetTimeLeft()
-    {
-        return (int) currentTime;
     }
 }

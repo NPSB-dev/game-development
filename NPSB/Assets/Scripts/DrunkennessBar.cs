@@ -16,7 +16,7 @@ public class DrunkennessBar : MonoBehaviour
 
     void Start()
     {
-        drunkennessText.text = "0/100";
+        drunkennessText.text = Globals.drunkenness.ToString() + "/100";
     }
 
     void Update()
@@ -28,8 +28,8 @@ public class DrunkennessBar : MonoBehaviour
     public void SetMaxDrunkenness(int drunkenness)
     {
         slider.maxValue = drunkenness;
-        slider.value = 0;
-        fill.color = gradient.Evaluate(0f);
+        slider.value = Globals.drunkenness;
+        fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 
     public int GetMaxDrunkenness()
