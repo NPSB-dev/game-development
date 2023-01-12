@@ -14,6 +14,10 @@ public class DrinkContestTrigger : MonoBehaviour, IInteractable
     {
         interactSuccessAudio.Play();
         Debug.Log("Start drink contest");
+        var levelChanger = GameObject.FindObjectOfType(typeof(LevelChanger)) as LevelChanger;
+
+        levelChanger.FadeToLevel(3);
+
         return true;
     }
 }
