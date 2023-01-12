@@ -41,6 +41,7 @@ public class DrinkingContestScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        stopGame = false;
         winText.SetActive(false);
         loseText.SetActive(false);
     }
@@ -56,6 +57,7 @@ public class DrinkingContestScript : MonoBehaviour
 
      void Beer()
     {
+        if (stopGame) { return; }
         beerTimer -= Time.deltaTime;
         if (beerTimer < 0f)
         {
@@ -70,6 +72,7 @@ public class DrinkingContestScript : MonoBehaviour
 
     void Hook()
     {
+        if (stopGame) { return; }
         if (Input.GetMouseButton(0))
         {
             hookPullVelocity += hookPullPower * Time.deltaTime;
@@ -96,6 +99,7 @@ public class DrinkingContestScript : MonoBehaviour
 
     void ProgressCheck()
     {
+        if (stopGame) { return; }
         Vector3 ls = progressBarContainer.localScale;
         ls.y = hookProgress;
         progressBarContainer.localScale = ls;
