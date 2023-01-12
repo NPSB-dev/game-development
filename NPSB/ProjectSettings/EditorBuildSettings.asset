@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PerfectBeerMinigame.unity
     guid: aaa96499f22ae0d448c6d4884a7dc716
+  - enabled: 1
+    path: Assets/Scenes/DrinkingContestMinigame.unity
+    guid: b330b914860279a479c4bde653ab4f01
   m_configObjects: {}
