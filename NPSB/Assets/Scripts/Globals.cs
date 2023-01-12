@@ -12,6 +12,7 @@ public class Globals : MonoBehaviour
     public static int nextTimeDecayDrunkenness = 10;
     public static float minutesToPlay = 0;
     public static float secondsToPlay = 0;
+    public static Vector3 playerCoords = Vector3.zero; // spawn player to the correct position after a minigame is ended
 
     //Pause settings:
     public static bool isPaused = false;

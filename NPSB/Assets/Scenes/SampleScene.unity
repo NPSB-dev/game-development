@@ -371,8 +371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1703198503}
+  currentTime: 0
   countDown: 1
-  infinite: 0
   started: 0
   timerSound: {fileID: 124447161}
   loseSound: {fileID: 1180867934}
@@ -4122,6 +4122,7 @@ MonoBehaviour:
   drunkennessBar: {fileID: 343039143}
   currentDrunkenness: 0
   beerSound: {fileID: 1555869725}
+  _collisionPointRadius: 0.35
 --- !u!54 &904281386
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4156,6 +4157,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drunkennessBar: {fileID: 343039143}
+--- !u!114 &904281389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904281379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3442cce38f6be846b83af6e8a571aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &925809966 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 60e892bc26a066649ab14df704128623, type: 3}
@@ -6797,6 +6810,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 07f064099e31f3a47840e2d784342107, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 07f064099e31f3a47840e2d784342107, type: 3}
+      propertyPath: m_TagString
+      value: Remy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07f064099e31f3a47840e2d784342107, type: 3}

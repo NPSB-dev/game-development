@@ -14,6 +14,11 @@ public class BeerPongTrigger : MonoBehaviour, IInteractable
     {
         interactSuccessAudio.Play();
         Debug.Log("Start beer pong");
+
+        var player = GameObject.FindGameObjectWithTag("Remy");
+
+        Globals.playerCoords = player.transform.position;
+
         return true;
     }
 }

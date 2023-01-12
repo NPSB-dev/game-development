@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,10 @@ public class PerfectBeerTrigger : MonoBehaviour, IInteractable
         Debug.Log("Start perfect beer");
 
         var levelChanger = GameObject.FindObjectOfType(typeof(LevelChanger)) as LevelChanger;
+
+        var player = GameObject.FindGameObjectWithTag("Remy");
+
+        Globals.playerCoords = player.transform.position;
 
         levelChanger.FadeToLevel(2);
         return true;

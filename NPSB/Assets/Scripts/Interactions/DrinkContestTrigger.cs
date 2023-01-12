@@ -16,6 +16,10 @@ public class DrinkContestTrigger : MonoBehaviour, IInteractable
         Debug.Log("Start drink contest");
         var levelChanger = GameObject.FindObjectOfType(typeof(LevelChanger)) as LevelChanger;
 
+        var player = GameObject.FindGameObjectWithTag("Remy");
+
+        Globals.playerCoords = player.transform.position;
+
         levelChanger.FadeToLevel(3);
 
         return true;
