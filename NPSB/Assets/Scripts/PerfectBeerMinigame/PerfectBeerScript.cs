@@ -56,7 +56,7 @@ public class PerfectBeerScript : MonoBehaviour
         }
 
         if (stopGame)
-        {
+        {   
             SceneTransition();
         }
 

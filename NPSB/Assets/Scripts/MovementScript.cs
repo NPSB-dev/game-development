@@ -11,6 +11,13 @@ public class MovementScript : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
 
+    void Start()
+    {
+        var player = GameObject.FindGameObjectWithTag("Remy");
+
+        player.transform.position = Globals.playerCoords;
+    }
+
     // Update is called once per frame
     void Update()
     {

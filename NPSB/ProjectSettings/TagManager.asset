@@ -7,6 +7,7 @@ TagManager:
   - beer
   - Resolution
   - FullScreen
+  - Remy
   layers:
   - Default
   - TransparentFX

@@ -15,6 +15,11 @@ public class BarmanGameTrigger : MonoBehaviour, IInteractable
     {
         interactSuccessAudio.Play();
         Debug.Log("Start barman game");
+
+        var player = GameObject.FindGameObjectWithTag("Remy");
+
+        Globals.playerCoords = player.transform.position;
+
         return true;
     }
 }
