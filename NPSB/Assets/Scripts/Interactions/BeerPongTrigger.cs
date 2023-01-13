@@ -14,11 +14,13 @@ public class BeerPongTrigger : MonoBehaviour, IInteractable
     {
         interactSuccessAudio.Play();
         Debug.Log("Start beer pong");
+        var levelChanger = GameObject.FindObjectOfType(typeof(LevelChanger)) as LevelChanger;
 
         var player = GameObject.FindGameObjectWithTag("Remy");
 
         Globals.playerCoords = player.transform.position;
 
+        levelChanger.FadeToLevel(6);
         return true;
     }
 }

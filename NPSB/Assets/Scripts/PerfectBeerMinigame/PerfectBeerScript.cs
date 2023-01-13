@@ -31,6 +31,8 @@ public class PerfectBeerScript : MonoBehaviour
         slider.maxValue = 100;
         beerSlider.value = 0;
         beerSlider.maxValue = 100;
+        Globals.isPaused = false;
+        Globals.isPausedExit = false;
     }
 
     // Update is called once per frame

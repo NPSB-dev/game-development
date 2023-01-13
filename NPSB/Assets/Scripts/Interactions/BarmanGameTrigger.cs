@@ -15,11 +15,13 @@ public class BarmanGameTrigger : MonoBehaviour, IInteractable
     {
         interactSuccessAudio.Play();
         Debug.Log("Start barman game");
+        var levelChanger = GameObject.FindObjectOfType(typeof(LevelChanger)) as LevelChanger;
 
         var player = GameObject.FindGameObjectWithTag("Remy");
 
         Globals.playerCoords = player.transform.position;
 
+        levelChanger.FadeToLevel(4);
         return true;
     }
 }
