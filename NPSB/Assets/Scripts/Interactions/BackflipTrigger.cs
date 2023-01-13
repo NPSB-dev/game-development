@@ -38,11 +38,23 @@ public class BackflipTrigger : MonoBehaviour, IInteractable
 
     public bool Interact(Interactor interactor)
     {
+
         if (Globals.drunkenness >= 100)
         {
             interactSuccessAudio.Play();
+
+            /* Uncomment section to swap scenes
+            
+            var levelChanger = GameObject.FindObjectOfType(typeof(LevelChanger)) as LevelChanger;
+
+            var player = GameObject.FindGameObjectWithTag("Remy");
+
+            Globals.playerCoords = player.transform.position;
+
+            levelChanger.FadeToLevel(5);*/
+
             // TODO handle win screen after implementing minigame
-            if(!openedWinScreen)
+            if (!openedWinScreen)
                 WinGame();
             return true;
         }
@@ -50,8 +62,10 @@ public class BackflipTrigger : MonoBehaviour, IInteractable
         {
             interactFailAudio.Play();
             Debug.Log("Not drunk enough to backflip");
-            return false;
         }
+
+
+        return true;
     }
 
     public void WinGame()

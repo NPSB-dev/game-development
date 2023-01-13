@@ -44,6 +44,8 @@ public class DrinkingContestScript : MonoBehaviour
         stopGame = false;
         winText.SetActive(false);
         loseText.SetActive(false);
+        Globals.isPaused = false;
+        Globals.isPausedExit = false;
     }
 
     // Update is called once per frame

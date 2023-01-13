@@ -31,6 +31,9 @@ public class MainMenu : MonoBehaviour
     {
         //SceneManager.LoadScene("SceneNAME");
         // 0 is the menu scene, we're adding 1 to the current scene so we get the next one
+        Globals.playerCoords = Vector3.zero;
+        Globals.secondsToPlay = 0;
+
         var playGame = SceneManager.GetActiveScene().buildIndex + 1;
 
         var levelChanger = GameObject.FindObjectOfType(typeof(LevelChanger)) as LevelChanger;
