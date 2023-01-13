@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DrinkingContestMinigame.unity
     guid: b330b914860279a479c4bde653ab4f01
+  - enabled: 1
+    path: Assets/Scenes/BartenderMinigame.unity
+    guid: b8969b35e3b023b479e59600316b5b1f
+  - enabled: 1
+    path: Assets/Scenes/BackflipMinigame.unity
+    guid: 3fa5bb98ae0d22a469f26499bd2f6333
+  - enabled: 1
+    path: Assets/Scenes/BeerPongMinigame.unity
+    guid: be633d506c213794890c1fa6349cf7c7
   m_configObjects: {}
