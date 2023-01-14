@@ -24,6 +24,14 @@ public class MainMenu : MonoBehaviour
         {
             Globals.minutesToPlay = -1;
         }
+
+        Globals.isPaused = false;
+        Globals.isPausedExit = false;
+        Globals.freezeMovement = false;
+        Globals.freezeDrunkenness = false;
+        Globals.freezeInteractions = false;
+        Globals.isSucceedingBackflip = 0;
+        Globals.drunkenness = 0;
         Play();
     }
 
