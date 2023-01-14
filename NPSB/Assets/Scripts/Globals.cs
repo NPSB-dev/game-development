@@ -8,11 +8,13 @@ public class Globals : MonoBehaviour
     public static Globals Instance { get; private set; }
 
     public static string DifficultyLevel;
-    public static int drunkenness;
+    public static int drunkenness = 100;
     public static int nextTimeDecayDrunkenness = 10;
     public static float minutesToPlay = 0;
     public static float secondsToPlay = 0;
     public static Vector3 playerCoords = Vector3.zero; // spawn player to the correct position after a minigame is ended
+
+    public static int isSucceedingBackflip = 0;
 
     //Pause settings:
     public static bool isPaused = false;
