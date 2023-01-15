@@ -10,18 +10,8 @@ public class BackflipTrigger : MonoBehaviour, IInteractable
     [SerializeField] private AudioSource interactSuccessAudio;
     [SerializeField] private AudioSource interactFailAudio;
 
+
     public string InteractionPrompt => _prompt;
-
-    [SerializeField] private GameObject winScreen;
-    public static bool openedWinScreen = false;
-
-    [SerializeField] private TextMeshProUGUI scoreToDisplay;
-    [SerializeField] private TextMeshProUGUI highscoreDisplay;
-
-    public void Start()
-    {
-        winScreen.SetActive(false);
-    }
 
     public void Update()
     {
@@ -43,19 +33,19 @@ public class BackflipTrigger : MonoBehaviour, IInteractable
         {
             interactSuccessAudio.Play();
 
-            /* Uncomment section to swap scenes
-            
-            var levelChanger = GameObject.FindObjectOfType(typeof(LevelChanger)) as LevelChanger;
+            // Uncomment section to swap scenes
+
+           var levelChanger = GameObject.FindObjectOfType(typeof(LevelChanger)) as LevelChanger;
 
             var player = GameObject.FindGameObjectWithTag("Remy");
 
             Globals.playerCoords = player.transform.position;
 
-            levelChanger.FadeToLevel(5);*/
+            levelChanger.FadeToLevel(5);
 
             // TODO handle win screen after implementing minigame
-            if (!openedWinScreen)
-                WinGame();
+            /*if (openedWinScreen)
+                WinGame();*/
             return true;
         }
         else
@@ -68,12 +58,12 @@ public class BackflipTrigger : MonoBehaviour, IInteractable
         return true;
     }
 
-    public void WinGame()
+    /*public void WinGame()
     {
         openedWinScreen = true;
         winScreen.SetActive(true);
         int score = CalculateScore();
-        scoreToDisplay.text = "Score: "+ score;
+        scoreToDisplay.text = "Score: " + score;
 
         if (score > Globals.highscore)
         {
@@ -118,7 +108,7 @@ public class BackflipTrigger : MonoBehaviour, IInteractable
             return 0;
         }
 
-        return (int) (multiplier * timeLeft);
+        return (int)(multiplier * timeLeft);
 
-    }
+    }*/
 }
