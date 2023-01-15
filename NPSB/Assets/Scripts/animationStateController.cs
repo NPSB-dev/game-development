@@ -21,7 +21,6 @@ public class animationStateController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(Globals.isSucceedingBackflip);
         if (Globals.freezeMovement)
         {
             animator.SetBool(isWalkingHash, false);

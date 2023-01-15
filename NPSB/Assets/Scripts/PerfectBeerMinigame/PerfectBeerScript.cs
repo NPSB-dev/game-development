@@ -128,7 +128,6 @@ public class PerfectBeerScript : MonoBehaviour
             else
                 Globals.drunkenness = 100;
         }
-        print(Globals.drunkenness);
     }
 
     public void PromptFinalScreen()

@@ -8,7 +8,7 @@ public class Globals : MonoBehaviour
     public static Globals Instance { get; private set; }
 
     public static string DifficultyLevel;
-    public static int drunkenness = 100;
+    public static int drunkenness = 0;
     public static int nextTimeDecayDrunkenness = 10;
     public static float minutesToPlay = 0;
     public static float secondsToPlay = 0;
