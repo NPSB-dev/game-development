@@ -110,21 +110,21 @@ public class PerfectBeerScript : MonoBehaviour
         if (sliderValue < 20.0f || sliderValue > 80)
         {
             if (Globals.drunkenness >= 10)
-                Globals.drunkenness += 100;
+                Globals.drunkenness -= 10;
             else
                 Globals.drunkenness = 0;
         }
         else if (sliderValue < 40.0f || sliderValue > 60)
         {
             if (Globals.drunkenness <= 95)
-                Globals.drunkenness += 100;
+                Globals.drunkenness += 5;
             else
                 Globals.drunkenness = 100;
         }
         else
         {
             if (Globals.drunkenness <= 90)
-                Globals.drunkenness += 100;
+                Globals.drunkenness += 10;
             else
                 Globals.drunkenness = 100;
         }
