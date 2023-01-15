@@ -39,6 +39,7 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Globals.minutesToPlay == 0 && Globals.secondsToPlay == 0) return;
         if (Input.GetKeyDown(KeyCode.Mouse0) && numberOfClicks < 1)
         {
             isDragging = true;

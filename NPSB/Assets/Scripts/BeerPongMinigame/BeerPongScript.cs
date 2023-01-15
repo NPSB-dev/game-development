@@ -29,6 +29,7 @@ public class BeerPongScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Globals.minutesToPlay == 0 && Globals.secondsToPlay == 0) return;
         currentTime = Globals.minutesToPlay * 60 + Globals.secondsToPlay;
         if (IsBallInsideCup() && !stopGame)
         {
