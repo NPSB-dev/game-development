@@ -13,6 +13,8 @@ public class BeerPongScript : MonoBehaviour
     public TextMeshProUGUI resultText;
 
     private bool stopGame = false;
+    private float initialTime;
+    private float currentTime;
 
     // Start is called before the first frame update
     void Start()
@@ -20,17 +22,20 @@ public class BeerPongScript : MonoBehaviour
 
         Globals.isPaused = false;
         Globals.isPausedExit = false;
-        StartCoroutine(Wait());
+        initialTime = Globals.minutesToPlay * 60 + Globals.secondsToPlay;
+        currentTime = Globals.minutesToPlay * 60 + Globals.secondsToPlay;
     }
 
     // Update is called once per frame
     void Update()
     {
+        currentTime = Globals.minutesToPlay * 60 + Globals.secondsToPlay;
         if (IsBallInsideCup() && !stopGame)
         {
             Win();
         }
-        if (!stopGame && BallOutsideOfCanvas())
+
+        if ((!stopGame && BallOutsideOfCanvas()) || (initialTime - currentTime == 10))
         {
             Lose();
         }
@@ -48,12 +53,6 @@ public class BeerPongScript : MonoBehaviour
         stopGame = true;
         PromptFinalScreen();
         SceneTransition();
-    }
-
-    public IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(10);
-        Lose();
     }
 
     public Vector3 GetCupCoord()
