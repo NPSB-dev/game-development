@@ -21,10 +21,7 @@ public class Score
         topScores = LoadScores();
 
         // add new score to list
-        if (!topScores.Contains(newScore))
-        {
-            topScores.Add(newScore);
-        }
+        topScores.Add(newScore);
 
         // sort the list in descending order
         topScores.Sort((a, b) => b.CompareTo(a));
@@ -36,7 +33,7 @@ public class Score
         }
 
         // save the top 3 scores to a file
-        using (StreamWriter writer = new("topscores.txt"))
+        using (StreamWriter writer = new(File.Open("topscores.txt", FileMode.Open)))
         {
             foreach (int score in topScores)
             {
@@ -51,7 +48,7 @@ public class Score
         topScores.Clear();
 
         // load the top 3 scores from the file
-        using (StreamReader reader = new StreamReader("topscores.txt"))
+        using (StreamReader reader = new(File.Open("topscores.txt", FileMode.OpenOrCreate)))
         {
             while (!reader.EndOfStream)
             {
