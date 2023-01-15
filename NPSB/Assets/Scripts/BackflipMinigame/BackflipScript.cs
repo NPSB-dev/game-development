@@ -141,8 +141,16 @@ public class BackflipScript : MonoBehaviour
             PlayerPrefs.SetInt("Highscore", score);
             Globals.highscore = score;
         }
-        highscoreDisplay.text = "Highscore: " + Globals.highscore;
 
+        highscoreDisplay.text = "Your highest scores: \n";
+
+        Score scoreFileManagement = new();
+        scoreFileManagement.SaveScores(score);
+
+        var loadTopHighestScores = scoreFileManagement.LoadScores();
+
+        loadTopHighestScores.ForEach(x => highscoreDisplay.text += x.ToString() + "\n");
+        
         Debug.Log("Did backflip");
     }
 
