@@ -63,7 +63,9 @@ public class Timer : MonoBehaviour
             if(currentTime <= 0){
                 timerText.text = "TIME'S UP";
                 timerText.color = Color.red;
-                if(!openedLossScreen)
+                Globals.minutesToPlay = 0;
+                Globals.secondsToPlay = 0;
+                if (!openedLossScreen)
                     FreezeScene();
             }
             else
