@@ -22,6 +22,7 @@ public class GlassFill : MonoBehaviour
 
     public void AddIngredient()
     {
+        if (Globals.minutesToPlay == 0 && Globals.secondsToPlay == 0) return;
         fillAmount += 0.1f;
         if (fillAmount > maxFill)
         {

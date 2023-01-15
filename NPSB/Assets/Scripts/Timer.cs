@@ -28,6 +28,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        openedLossScreen = false;
         // Debug.Log("Started scene, isPaused: " + Globals.isPaused + "  isPausedExit: " + Globals.isPausedExit);
         loseScreen.SetActive(false);
         minutes = Globals.minutesToPlay;
@@ -63,7 +64,9 @@ public class Timer : MonoBehaviour
             if(currentTime <= 0){
                 timerText.text = "TIME'S UP";
                 timerText.color = Color.red;
-                if(!openedLossScreen)
+                Globals.minutesToPlay = 0;
+                Globals.secondsToPlay = 0;
+                if (!openedLossScreen)
                     FreezeScene();
             }
             else

@@ -51,7 +51,8 @@ public class DrinkingContestScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (stopGame) { SceneTransition(); }
+        if (Globals.minutesToPlay == 0 && Globals.secondsToPlay == 0) return;
+        if (stopGame) { SceneTransition(); return; }
         Beer();
         Hook();
         ProgressCheck();

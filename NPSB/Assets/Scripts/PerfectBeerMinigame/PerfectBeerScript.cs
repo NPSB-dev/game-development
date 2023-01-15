@@ -38,6 +38,14 @@ public class PerfectBeerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (stopGame)
+        {
+            SceneTransition();
+            return;
+        }
+        if (Globals.minutesToPlay == 0 && Globals.secondsToPlay == 0) return;
+
+        
         if (Input.GetKeyDown(KeyCode.Space) && !spacePressed)
         {
             spacePressed = true;
@@ -57,10 +65,7 @@ public class PerfectBeerScript : MonoBehaviour
             PourBeer();
         }
 
-        if (stopGame)
-        {   
-            SceneTransition();
-        }
+        
 
         if (spacePressed && beerSlider.value == topValue && !stopGame)
         {
@@ -128,7 +133,6 @@ public class PerfectBeerScript : MonoBehaviour
             else
                 Globals.drunkenness = 100;
         }
-        print(Globals.drunkenness);
     }
 
     public void PromptFinalScreen()

@@ -43,6 +43,7 @@ public class ClickDrink : MonoBehaviour
     public void CheckDrink()
     {
         if (drinkClicked) { return; }
+        if (Globals.minutesToPlay == 0 && Globals.secondsToPlay == 0) return;
         drinkClicked = true;
         nameOfDrink = drinkCombinations.CheckIfGoodCombination(currentIngredients);
         if (drinkCombinations.CheckIfGoodCombination(currentIngredients).Length > 0)

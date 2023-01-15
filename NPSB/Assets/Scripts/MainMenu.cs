@@ -8,17 +8,18 @@ public class MainMenu : MonoBehaviour
     public void SetDifficulty(string difficultyLevel)
     {
         Globals.DifficultyLevel = difficultyLevel;
+        Globals.secondsToPlay = 0;
         if (Globals.DifficultyLevel == "easy")
-        {
-            Globals.minutesToPlay = 10;
-        }
-        if (Globals.DifficultyLevel == "normal")
         {
             Globals.minutesToPlay = 5;
         }
-        if (Globals.DifficultyLevel == "hard")
+        if (Globals.DifficultyLevel == "normal")
         {
             Globals.minutesToPlay = 3;
+        }
+        if (Globals.DifficultyLevel == "hard")
+        {
+            Globals.minutesToPlay = 2;
         }
         if (Globals.DifficultyLevel == "endless")
         {
