@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Mojito",
+    "ingredients": [
+      "Rum",
+      "Lime",
+      "Sugar"
+    ]
+  },
+  {
+    "name": "Margarita",
+    "ingredients": [
+      "Tequila",
+      "Lime",
+      "Triple Sec"
+    ]
+  },
+  {
+    "name": "Daiquiri",
+    "ingredients": [
+      "Rum",
+      "Lime"
+    ]
+  },
+  {
+    "name": "Cosmo",
+    "ingredients": [
+      "Vodka",
+      "Cranberry Juice",
+      "Lime",
+      "Triple Sec"
+    ]
+  },
+  {
+    "name": "Long Island Iced Tea",
+    "ingredients": [
+      "Vodka",
+      "Tequila",
+      "Rum",
+      "Gin",
+      "Cola",
+      "Triple Sec"
+    ]
+  },
+  {
+    "name": "Old Fashioned",
+    "ingredients": [
+      "Bourbon",
+      "Sugar"
+    ]
+  },
+  {
+    "name": "Martini",
+    "ingredients": [
+      "Gin",
+      "Dry Vermouth"
+    ]
+  },
+  {
+    "name": "Whiskey Sour",
+    "ingredients": [
+      "Whiskey",
+      "Lime",
+      "Sugar"
+    ]
+  },
+  {
+    "name": "Cuba Libre",
+    "ingredients": [
+      "Rum",
+      "Lime",
+      "Cola"
+    ]
+  },
+  {
+    "name": "Cuba Libre",
+    "ingredients": [
+      "Rum",
+      "Cola"
+    ]
+  }
+]
