@@ -18,6 +18,7 @@ public class ExitIngameMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(exitMenu == null) { return; }
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (Globals.isPausedExit)
             {
@@ -42,6 +43,7 @@ public class ExitIngameMenu : MonoBehaviour
 
     public void PauseGame()
     {
+
         exitMenu.SetActive(true);
         Globals.freezeMovement = true;
         Globals.freezeDrunkenness = true;
