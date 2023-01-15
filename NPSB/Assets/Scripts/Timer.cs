@@ -28,6 +28,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        openedLossScreen = false;
         // Debug.Log("Started scene, isPaused: " + Globals.isPaused + "  isPausedExit: " + Globals.isPausedExit);
         loseScreen.SetActive(false);
         minutes = Globals.minutesToPlay;
