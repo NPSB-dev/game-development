@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class BackflipScript : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class BackflipScript : MonoBehaviour
     private bool leftToRight = true;
     private bool spacePressed = false;
     private bool stopGame = false;
+    private bool currentGame = false;
 
     // Start is called before the first frame update
     void Start()
@@ -131,6 +133,9 @@ public class BackflipScript : MonoBehaviour
 
     public void WinGame()
     {
+        if (currentGame)
+            return;
+
         openedWinScreen = true;
         winScreen.SetActive(true);
         int score = CalculateScore();
@@ -141,7 +146,17 @@ public class BackflipScript : MonoBehaviour
             PlayerPrefs.SetInt("Highscore", score);
             Globals.highscore = score;
         }
-        highscoreDisplay.text = "Highscore: " + Globals.highscore;
+
+        highscoreDisplay.text = "Your highest scores: \n";
+
+        Score scoreFileManagement = new();
+        scoreFileManagement.SaveScores(score);
+
+        var loadTopHighestScores = scoreFileManagement.LoadScores();
+
+        loadTopHighestScores.ForEach(x => highscoreDisplay.text += x.ToString() + "\n");
+        
+        currentGame = true;
 
         Debug.Log("Did backflip");
     }
