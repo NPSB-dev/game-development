@@ -5,7 +5,7 @@
 
 ###  **Game goal:**  
 As a user I want to play against a clock counting down. The
-game’s goal is to fill the drunkenness bar to a 100% and do a backflip before the time runs out.
+game’s goal is to fill the drunkenness bar to a 100% and do a backflip before the time runs out.  
 
 ### **Controls:**  
 - W A S D - movement  
@@ -14,7 +14,11 @@ game’s goal is to fill the drunkenness bar to a 100% and do a backflip before 
 - P - Pause  
 - E - Interact  
 - Esc - Exit in-game  
-  
+- Space - inside Backflip minigame  
+- Space - inside Perfect Beer minigame
+- Left click - inside Drink Contest minigame
+- Left click - inside Bartender minigame
+- ` - add 100 drunkenness instantly (god-mode)
   
 ### Meet the team:  
 
